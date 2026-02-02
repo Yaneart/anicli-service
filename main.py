@@ -105,3 +105,7 @@ def watch_sources(
         "episodes": episode_numbers,
         "players": players
     }
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
