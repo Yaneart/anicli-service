@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Query
-from anicli_api.source.animego import Extractor
+from anicli_api.source.yummy_anime import Extractor
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -51,10 +51,12 @@ def watch(title: str = Query(...)):
 def detect_player(source):
     url = source.url.lower()
 
-    if "animego" in url:
-        return {"id": "animego", "name": "AnimeGo", "priority": 3}
     if "kodik" in url:
-        return {"id": "kodik", "name": "Kodik", "priority": 2}
+        return {"id": "kodik", "name": "Kodik", "priority": 3}
+    if "animego" in url:
+        return {"id": "animego", "name": "AnimeGo", "priority": 2}
+    if "yummyani" in url:
+        return {"id": "yummy", "name": "YummyAnime", "priority": 1}
     if "aniboom" in url:
         return {"id": "aniboom", "name": "AniBoom", "priority": 1}
 
